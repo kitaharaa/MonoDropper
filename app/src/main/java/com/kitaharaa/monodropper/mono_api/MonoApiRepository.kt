@@ -1,7 +1,7 @@
 package com.kitaharaa.monodropper.mono_api
 
 import com.kitaharaa.monodropper.model.account.AccountInfo
-import com.kitaharaa.monodropper.model.transactions.Transactions
+import com.kitaharaa.monodropper.model.transactions.Transaction
 
 interface MonoApiRepository {
     suspend fun getUserInfo(xToken: String?): AccountInfo?
@@ -10,5 +10,5 @@ interface MonoApiRepository {
         accountId: String?,
         timeFrom: String,
         timeTo: String? = null
-    ):  List<Transactions>?
+    ):  List<Transaction>?
 }

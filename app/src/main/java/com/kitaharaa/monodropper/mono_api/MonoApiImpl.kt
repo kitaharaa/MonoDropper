@@ -2,7 +2,7 @@ package com.kitaharaa.monodropper.mono_api
 
 import android.util.Log
 import com.kitaharaa.monodropper.model.account.AccountInfo
-import com.kitaharaa.monodropper.model.transactions.Transactions
+import com.kitaharaa.monodropper.model.transactions.Transaction
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
@@ -33,7 +33,7 @@ class MonoApiImpl @Inject constructor(
         accountId: String?,
         timeFrom: String,
         timeTo: String?
-    ): List<Transactions>? = try {
+    ): List<Transaction>? = try {
         val fullPath = "personal/statement/$accountId/$timeFrom${if (timeTo != null) "/$timeTo" else ""}"
 
         Log.e("MonoApiImpl", "getAccountTransaction: fullPath = $fullPath")

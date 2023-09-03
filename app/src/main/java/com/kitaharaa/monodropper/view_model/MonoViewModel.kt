@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kitaharaa.monodropper.model.account.AccountInfo
-import com.kitaharaa.monodropper.model.transactions.Transactions
+import com.kitaharaa.monodropper.model.transactions.Transaction
 import com.kitaharaa.monodropper.mono_api.MonoApiRepository
 import com.kitaharaa.monodropper.mono_api.TestTokens.testAccountId
 import com.kitaharaa.monodropper.mono_api.TestTokens.testTimeFrom
@@ -23,7 +23,7 @@ class MonoViewModel @Inject constructor(
     private val _accountInfoFlow: MutableStateFlow<AccountInfo?> = MutableStateFlow(null)
     val accountInfoFlow = _accountInfoFlow.asStateFlow()
 
-    private val _transactionsFlow: MutableStateFlow<List<Transactions>?> = MutableStateFlow(null)
+    private val _transactionsFlow: MutableStateFlow<List<Transaction>?> = MutableStateFlow(null)
     val transactions = _transactionsFlow.asStateFlow()
 
     init {
