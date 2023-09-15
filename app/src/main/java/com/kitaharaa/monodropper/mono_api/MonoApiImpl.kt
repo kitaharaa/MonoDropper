@@ -14,6 +14,7 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import javax.inject.Inject
 
+// todo extract build function
 class MonoApiImpl @Inject constructor(
     private val client: HttpClient
 ) : MonoApiRepository {
@@ -34,7 +35,8 @@ class MonoApiImpl @Inject constructor(
         timeFrom: String,
         timeTo: String?
     ): List<Transaction>? = try {
-        val fullPath = "personal/statement/$accountId/$timeFrom${if (timeTo != null) "/$timeTo" else ""}"
+        val fullPath =
+            "personal/statement/$accountId/$timeFrom${if (timeTo != null) "/$timeTo" else ""}"
 
         Log.e("MonoApiImpl", "getAccountTransaction: fullPath = $fullPath")
         client.request {
