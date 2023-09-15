@@ -1,10 +1,12 @@
+val roomLibraryVersion = "2.5.2"
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-    id ("com.google.dagger.hilt.android")
-
-    id("kotlinx-serialization")
+    id("com.google.dagger.hilt.android")
+    id("kotlinx-serialization")/*
+   id("com.google.devtools.ksp")*/
 }
 
 android {
@@ -83,6 +85,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
     //hilt setup
-    implementation( "com.google.dagger:hilt-android:2.47")
+    implementation("com.google.dagger:hilt-android:2.47")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
+
+    // Room
+//    implementation("androidx.room:room-ktx:$roomLibraryVersion")
+//    ksp("androidx.room:room-compiler:$roomLibraryVersion")
+    kapt ("androidx.room:room-compiler:2.5.1")
+    implementation( "androidx.room:room-ktx:2.5.1")
 }
