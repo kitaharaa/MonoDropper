@@ -3,8 +3,8 @@ package com.kitaharaa.monodropper.view_model
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kitaharaa.monodropper.model.account.AccountInfo
-import com.kitaharaa.monodropper.model.transactions.Transaction
+import com.kitaharaa.monodropper.model.api.account.AccountInfo
+import com.kitaharaa.monodropper.model.api.transactions.Transaction
 import com.kitaharaa.monodropper.mono_api.MonoApiRepository
 import com.kitaharaa.monodropper.mono_api.TestTokens.testAccountId
 import com.kitaharaa.monodropper.mono_api.TestTokens.testTimeFrom

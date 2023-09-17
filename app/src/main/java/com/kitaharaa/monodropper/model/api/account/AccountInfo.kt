@@ -1,4 +1,4 @@
-package com.kitaharaa.monodropper.model.account
+package com.kitaharaa.monodropper.model.api.account
 
 import kotlinx.serialization.Serializable
 

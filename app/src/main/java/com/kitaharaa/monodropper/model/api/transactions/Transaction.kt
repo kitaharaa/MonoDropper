@@ -1,4 +1,4 @@
-package com.kitaharaa.monodropper.model.transactions
+package com.kitaharaa.monodropper.model.api.transactions
 
 import kotlinx.serialization.Serializable
 
