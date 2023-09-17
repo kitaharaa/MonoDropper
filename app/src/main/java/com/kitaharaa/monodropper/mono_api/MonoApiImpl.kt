@@ -1,8 +1,8 @@
 package com.kitaharaa.monodropper.mono_api
 
 import android.util.Log
-import com.kitaharaa.monodropper.model.account.AccountInfo
-import com.kitaharaa.monodropper.model.transactions.Transaction
+import com.kitaharaa.monodropper.model.api.account.AccountInfo
+import com.kitaharaa.monodropper.model.api.transactions.Transaction
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
