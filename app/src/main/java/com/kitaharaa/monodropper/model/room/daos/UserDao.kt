@@ -18,6 +18,9 @@ interface UserDao {
     @Delete
     fun deleteUser(user: User)
 
+    @Query("SELECT * FROM User")
+    fun getUsers(): List<User>
+
     @Transaction
     @Query("SELECT * FROM User INNER JOIN TransactionTable ON User.id = TransactionTable.owner_id ORDER BY TransactionTable.time ASC")
     fun getUsersWithTransactions(): List<UserWithTransaction>

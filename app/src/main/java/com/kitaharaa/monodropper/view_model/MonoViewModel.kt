@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kitaharaa.monodropper.model.api.account.AccountInfo
 import com.kitaharaa.monodropper.model.api.transactions.Transaction
+import com.kitaharaa.monodropper.model.room.MonoDatabase
+import com.kitaharaa.monodropper.model.room.tables.User
 import com.kitaharaa.monodropper.mono_api.MonoApiRepository
 import com.kitaharaa.monodropper.mono_api.TestTokens.testAccountId
 import com.kitaharaa.monodropper.mono_api.TestTokens.testTimeFrom
@@ -18,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MonoViewModel @Inject constructor(
-    private val monoApi: MonoApiRepository
+    private val monoApi: MonoApiRepository,
+    private val monoDatabase: MonoDatabase
 ) : ViewModel() {
     private val _accountInfoFlow: MutableStateFlow<AccountInfo?> = MutableStateFlow(null)
     val accountInfoFlow = _accountInfoFlow.asStateFlow()
@@ -41,6 +44,16 @@ class MonoViewModel @Inject constructor(
             ).also {
                 Log.e(TAG, "transaction list collection: ${transactions.value}")
             }
+
+            monoDatabase.userDao().insertUser(
+                User(
+                    apiToken = "UpeiDOwWOn0-BBhxPS-ToA"
+                )
+            )
+
+            val users = monoDatabase.userDao().getUsers()
+
+            Log.e(TAG, "init database: users = $users")
         }
     }
 

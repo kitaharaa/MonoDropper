@@ -14,9 +14,8 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import javax.inject.Inject
 
-// todo extract build function
 class MonoApiImpl @Inject constructor(
-    private val client: HttpClient
+    private val client: HttpClient,
 ) : MonoApiRepository {
     override suspend fun getUserInfo(xToken: String?): AccountInfo? =
         try {
@@ -26,6 +25,7 @@ class MonoApiImpl @Inject constructor(
             ).body()
         } catch (e: Exception) {
             Log.e(TAG, "getUserInfo: ", e)
+
             null
         }
 
@@ -33,27 +33,18 @@ class MonoApiImpl @Inject constructor(
         xToken: String?,
         accountId: String?,
         timeFrom: String,
-        timeTo: String?
+        timeTo: String?,
     ): List<Transaction>? = try {
         val fullPath =
             "personal/statement/$accountId/$timeFrom${if (timeTo != null) "/$timeTo" else ""}"
 
-        Log.e("MonoApiImpl", "getAccountTransaction: fullPath = $fullPath")
-        client.request {
+        client.buildGetRequest(
+            path = fullPath, key = xToken
 
-            val monoHost = "api.monobank.ua"
-            url {
-                protocol = URLProtocol.HTTPS
-                host = monoHost
-                path(fullPath)
-            }
-            val keyHeader = "X-Token"
-
-            method = HttpMethod.Get
-            header(keyHeader, xToken)
-        }.body()
+        ).body()
     } catch (e: Exception) {
         Log.e(TAG, "getAccountTransaction: ", e)
+
         null
     }
 
