@@ -9,6 +9,11 @@ plugins {
 }
 
 android {
+
+    allprojects {
+        configurations.all { resolutionStrategy.force("androidx.emoji2:emoji2:1.3.0") }
+    }
+
     namespace = "com.kitaharaa.monodropper"
     compileSdk = 33
 
@@ -53,7 +58,6 @@ android {
         }
     }
 }
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.10.1")
@@ -90,4 +94,9 @@ dependencies {
     // Room
     implementation("androidx.room:room-ktx:$roomLibraryVersion")
     kapt("androidx.room:room-compiler:$roomLibraryVersion")
+
+    //compose navigation
+    val navVersion = "2.5.3"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
 }
