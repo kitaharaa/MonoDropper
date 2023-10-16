@@ -94,6 +94,11 @@ dependencies {
     // Room
     implementation("androidx.room:room-ktx:$roomLibraryVersion")
     kapt("androidx.room:room-compiler:$roomLibraryVersion")
+/*
+    //Compose paging
+    val pagingVersion = "3.2.1"
+
+    implementation("androidx.paging:paging-runtime:$pagingVersion")*/
 
     //compose navigation
     val navVersion = "2.5.3"
